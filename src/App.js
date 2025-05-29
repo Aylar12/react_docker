@@ -1,5 +1,5 @@
 const App = () => {
-  return <div>hello!</div>;
+  return <div><h1>Hello Docker!</h1></div>;
 };
 
 export default App;
