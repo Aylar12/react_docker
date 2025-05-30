@@ -1,6 +1,7 @@
 
 services:
   frontend:
+    container_name: cd_front
     build: .
 
     ports:
@@ -9,6 +10,7 @@ services:
       - my-network
 
   backend:
+    container_name: cd_back
     build: .
     ports:
       - "2000:3000"
