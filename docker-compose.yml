@@ -32,8 +32,8 @@ services:
      ports:
       - 9090:9090  
      volumes:
-      - /path/to/prometheus.yml:/etc/prometheus/prometheus.yml 
-      - prometheus-data:/prometheus 
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
 
 volumes:
   grafana-storage:
