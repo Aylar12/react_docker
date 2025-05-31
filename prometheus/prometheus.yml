@@ -6,9 +6,9 @@ scrape_configs:
     static_configs:
       - targets: ["63.178.8.125:9090"]
 
-  - job_name: "frontend"
-    static_configs:
-      - targets: ["cd_front:3000"]   
+  # - job_name: "frontend"
+  #   static_configs:
+  #      - targets: ["cd_front:3000"]   
 
   - job_name: "backend"
     static_configs:
