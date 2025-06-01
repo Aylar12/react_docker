@@ -25,6 +25,8 @@ services:
     volumes: 
      - grafana-storage:/var/lib/grafana
     restart: always
+    networks:
+     - my-network
 
   prometheus:
     image: prom/prometheus:latest
