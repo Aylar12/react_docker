@@ -58,8 +58,6 @@ services:
     container_name: loki
     ports:
       - "3100:3100"
-    networks:
-      - my-network
     command: -config.file=/etc/loki/local-config.yaml
 
   promtail:
@@ -71,8 +69,7 @@ services:
       - /etc/hostname:/etc/hostname
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
     command: -config.file=/etc/promtail/promtail.yaml
-    networks:
-      - my-network
+
 
 
 volumes:
