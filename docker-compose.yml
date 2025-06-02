@@ -64,11 +64,10 @@ services:
     image: grafana/promtail:latest
     container_name: promtail
     volumes:
+      - ./promtail/promtail-config.yml:/etc/promtail/promtail.yaml
       - /var/log:/var/log
-      - ./promtail/promtail-config.yaml:/etc/promtail/promtail.yaml
-      - /etc/hostname:/etc/hostname
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
     command: -config.file=/etc/promtail/promtail.yaml
+
 
 
 
