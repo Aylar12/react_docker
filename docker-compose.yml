@@ -108,7 +108,7 @@ services:
     command: ["run", "/etc/alloy/config.alloy"]
 
     volumes:
-      - ./alloy-config:/etc/alloy
+      - ./alloy:/etc/alloy
       - /var/log:/host/var/log:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
