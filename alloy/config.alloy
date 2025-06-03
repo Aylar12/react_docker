@@ -1,5 +1,5 @@
 local.file_match "local_files" {
-  path_targets = [{"__path__" = "/var/log/*.log"}]  # مسیر درست داخل کانتینر
+  path_targets = [{"__path__" = "/var/log/*.log"}] 
   sync_period = "5s"
 }
 
@@ -20,10 +20,10 @@ loki.process "filter_logs" {
 
 loki.write "grafana_loki" {
   endpoint {
-    url = "http://loki:3100/loki/api/v1/push"  # اینجا لوکال هاست نباشه
-    # basic_auth {
-    #   username = "admin"
-    #   password = "@Aylar.80"
-    # }
+    url = "http://loki:3100/loki/api/v1/push"
+     basic_auth {
+       username = "admin"
+       password = "@Aylar.80"
+     }
   }
 }
