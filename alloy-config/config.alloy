@@ -4,6 +4,11 @@ server "default" {
   }
 }
 
+logging {
+  level  = "info"
+  format = "logfmt"
+}
+
 prometheus.scrape "self" {
   targets = [
     "localhost:12345",
@@ -11,18 +16,17 @@ prometheus.scrape "self" {
 }
 
 loki.source.file "varlogs" {
-  paths = ["/host/var/log/*.log"]
+  paths      = ["/host/var/log/*.log"]
+  forward_to = [loki.write.send_to_loki.receiver]  # ❗️اینجا باید به writer وصل بشه
 }
 
 loki.write "send_to_loki" {
   endpoint {
-    url = "http://localhost:3100/loki/api/v1/push"
+    url = "http://loki:3100/loki/api/v1/push"
   }
 
   labels = {
     job = "alloy-logs"
   }
-
-  forward_to = [loki.source.file.varlogs.output]
 }
 
