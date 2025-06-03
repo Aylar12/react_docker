@@ -1,0 +1,19 @@
+// alloy-config/config.alloy
+
+local.file "syslogs" {
+  path = "/host/var/log/syslog"
+}
+
+prometheus.scrape "self" {
+  targets = ["localhost:12345"]
+}
+
+prometheus.remote_write "to_grafana_cloud" {
+  endpoint {
+    url = "https://prometheus-blocks-prod-us-central1.grafana.net/api/prom/push"
+    basic_auth {
+      username = "admin"
+      password = "@Aylar.80"
+    }
+  }
+}
