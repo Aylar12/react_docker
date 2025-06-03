@@ -68,7 +68,7 @@ services:
       - /var/log:/var/log
     command: -config.file=/etc/promtail/promtail.yaml
 
-alloy:
+  alloy:
     image: grafana/alloy:latest
     command: ["run", "--config.file=/etc/alloy/config.alloy"]
     volumes:
