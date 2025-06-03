@@ -95,26 +95,27 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
 
-  promtail:
-    image: grafana/promtail:latest
-    container_name: promtail
-    volumes:
-      - ./promtail/promtail-config.yml:/etc/promtail/promtail.yaml
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/promtail.yaml
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   container_name: promtail
+  #   volumes:
+  #     - ./promtail/promtail-config.yml:/etc/promtail/promtail.yaml
+  #     - /var/log:/var/log
+  #   command: -config.file=/etc/promtail/promtail.yaml
+
 
   alloy:
     image: grafana/alloy:latest
     command: ["run", "/etc/alloy/config.alloy"]
-
     volumes:
       - ./alloy:/etc/alloy
-      - /var/log:/host/var/log:ro
+      - /var/log:/var/log:ro   
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
     ports:
       - "12345:12345"
     restart: always
+
 
 
 
