@@ -68,6 +68,18 @@ services:
       - /var/log:/var/log
     command: -config.file=/etc/promtail/promtail.yaml
 
+  alloy:
+    image: grafana/alloy
+    command: ["run", "--config.file=/etc/alloy/config.alloy"]
+    volumes:
+      - ./alloy-config:/etc/alloy
+      - /proc:/host/proc:ro
+      - /var/log:/host/var/log:ro
+      - /sys:/host/sys:ro
+    ports:
+      - "12345:12345" 
+    restart: always
+
 
 
 
