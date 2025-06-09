@@ -27,3 +27,32 @@ loki.write "grafana_loki" {
      }
   }
 }
+declare "add" {
+  argument "a" {}
+  argument "b" {}
+
+  export "sum" {
+    value = argument.a.value + argument.b.value
+  }
+}
+
+add "example" {
+  a = 15
+  b = 17
+}
+
+prometheus.remote_write "local" {
+  endpoint {
+    url = "http://prometheus:9090/api/v1/write"
+  }
+}
+
+prometheus.exporter "add_metrics" {
+  metric "add_sum" {
+    value = add.example.sum
+    type  = "gauge"
+    labels = {
+      job = "alloy"
+    }
+  }
+}
